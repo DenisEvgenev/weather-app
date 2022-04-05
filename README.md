@@ -1,2 +1,2 @@
 # weather-app
-# weather-app
+Learn Node.js by building real-world applications with Node JS, Express, MongoDB, Jest, and more!
