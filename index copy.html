@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no">
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+    <style type="text/css">
+        html { -webkit-text-size-adjust:none; -ms-text-size-adjust: none;}
+        @-ms-viewport {width:device-width}
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+        .menu ul li {
+            list-style-type: none;
+            float: left;
+            margin: 0 10px; /*расстояние между пунктами по ширине*/
+        }
+        .menu2 ul li {
+            list-style-type: disc;
+            margin: 10px 0; /*расстояние между пунктами по высоте*/
+
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors],  /* iOS */
+        .x-gmail-data-detectors,    /* Gmail */
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying an download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Prevents underlining the button text in Windows 10 */
+        .button-link {
+            text-decoration: none !important;
+        }
+
+        a[href^="tel"] {
+            color: inherit; /* Inherit text color of parent element. */
+            text-decoration: none; /* Remove underline. */
+            /* Additional css `propery: value;` pairs here */
+        }
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+        /* Thanks to Eric Lepetit (@ericlepetitsf) for help troubleshooting */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) { /* iPhone 6 and 6+ */
+            .email-container {
+                min-width: 375px !important;
+            }
+            div[style*="margin: 16px 0;"] { margin: 0 !important; }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+
+            .email-container {
+                width: 100% !important;
+                margin: auto !important;
+            }
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid {
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+            /* What it does: Adjust typography on small screens to improve readability */
+            .email-container p {
+                font-size: 17px !important;
+                line-height: 22px !important;
+            }
+        }
+
+        @media only screen and (min-device-width: 667px) {
+            .table620{
+                width:620px !important;
+            }
+        }
+        @media only screen and (max-device-width: 667px), only screen and (max-width: 667px) {
+            table[class="table620"]{
+                width: 100% !important;
+            }
+            [class="mob_align_left"] {
+                text-align: left;
+            }
+            [class="mob_align_center"] {
+                text-align: center !important;
+            }
+            [class="mob_100"] {
+                width: 100% !important;
+            }
+            [class="mob_space_15"] {
+                height: 16px !important;
+                line-height: 16px !important;
+                font-size: 16px !important;
+            }
+            [class="mob_space_24"] {
+                height: 24px !important;
+                line-height: 24px !important;
+                font-size: 24px !important;
+            }
+            [class="mob_space_28"] {
+                height: 28px !important;
+                line-height: 28px !important;
+                font-size: 28px !important;
+            }
+            [class="mob_space_32"] {
+                height: 32px !important;
+                line-height: 32px !important;
+                font-size: 32px !important;
+            }
+            [class="mob_space_48"] {
+                height: 48px !important;
+                line-height: 48px !important;
+                font-size: 48px !important;
+            }
+            [class="mob_space_not"] {
+                height: 0 !important;
+                line-height: 0 !important;
+                font-size: 0 !important;
+            }
+            [class="mob_title"] {
+                line-height: 24px !important;
+                font-size: 21px !important;
+            }
+            [class="mob_text"] {
+                line-height: 21px !important;
+                font-size: 17px !important;
+            }
+            [class="mob_text_19"] {
+                line-height: 24px !important;
+                font-size: 19px !important;
+            }
+
+            [class="mob_big_btn_td"] {
+                line-height: 25px !important;
+                font-size: 19px !important;
+                padding-top: 1px !important;
+                padding-bottom: 2px !important;
+            }
+            [class="mob_big_btn"] {
+                font-size: 19px !important;
+                line-height: 44px !important;
+                height: 44px !important;
+            }
+
+            [class="unsubscribe"] {
+                line-height: 15px !important;
+                font-size: 11px !important;
+            }
+
+            [class="mob_288"] {
+                width: 288px !important;
+                max-width: 288px !important;
+            }
+        }
+        .table620{
+            width:620px;
+        }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+</head>
+
+<body style="padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;font-family:Arial, Helvetica, Tahoma,sans-serif;background-color:#F4F6F8;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;" >
+<div id="mailsub" align="center">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:100%;" >
+        <tr>
+            <td align="center">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="width: 100%; max-width: 592px; min-width: 320px;">
+                    <!-- Header starts -->
+                    <tr>
+                        <td width="100%" bgcolor="#F4F6F8" align="center" valign="top" style="max-width: 592px; min-width: 320px;">
+                            <!--[if gte mso 10]>
+                            <table align="center" width="592" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                            <![endif]-->
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 592px; min-width: 320px;">
+                                <tr>
+                                    <td width="16"></td>
+                                    <td align="center">
+
+                                        <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="center" style="font-size: 0">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td height="64" class="mob_space_48">
+                                                                <div style="height: 64px;line-height: 64px; font-size: 64px" class="mob_space_48">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="36" align="left" valign="middle" style="padding:0px;" class="logo">
+                                                                <a href="#" target="_blank" style="color:#000000;font-family:Arial, Helvetica, Tahoma,sans-serif;text-decoration:none;" >
+                                                                    <img width="240" border="0" src="https://email-images.mindbox.ru/682447/4597023/1.png" style="width:100%;max-width: 240px;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;border-width:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" class="mob_logo" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="48" class="mob_space_32">
+                                                                <div style="height: 48px;line-height: 48px; font-size: 48px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                    <td width="16"></td>
+                                </tr>
+                            </table>
+                            <!--[if gte mso 10]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </td>
+                    </tr>
+                </table>
+                <!-- Header ends -->
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center" bgcolor="#F4F6F8">
+                <!--[if gte mso 10]>
+                <table width="592" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                <![endif]-->
+                <table bgcolor="#F4F6F8" border="0" cellspacing="0" cellpadding="0" width="100%" style="max-width:592px;min-width:320px;" >
+                    <tr>
+                        <td width="16"></td>
+                        <td align="center" bgcolor="#F4F6F8">
+                            <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="center">
+                                        <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                            <tr>
+                                                <td align="left" style="font-size:0;line-height:0;" >
+                                                    <table align="left" dir="ltr" border="0" cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;" >
+                                                        <tr>
+                                                            <td dir="ltr" align="left">
+
+                                                                <div>
+                                                                    <span style="font-family: Arial, sans-serif;line-height: 40px;font-size: 36px; color: #1F1F1F; font-weight: bold" class="mob_title">
+                                                                         Водители против пешеходов, уникальные «Жигули» и выручайники
+                                                                    </span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="24" style="line-height: 24px;">
+                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td dir="ltr" align="center">
+                                                                <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td align="left">
+                                                                            <div>
+                                                                                <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">Знаете ли вы, что самому старому автомобилю в продаже на Авто.ру 116 лет? И это лишь один факт из миллиарда, которые можно узнать, регулярно посещая Авто.ру и читая наш Журнал! Самое интересное и важное мы собрали в нашем ежедневном вечернем дайджесте.</span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="48" class="mob_space_32">
+                                                                <div style="height: 48px;line-height: 48px; font-size: 48px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                            <td align="center">
+                                                                <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                    <tr>
+                                                                        <td align="center"> <div style="display: block; width: 100%; border-radius: 24px; background: #FFFFFF;">
+                                                                            <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-radius: 24px;overflow:hidden;">
+                                                                                <tr>
+                                                                                    <td align="center" bgcolor="#FFFFFF"> <table bgcolor="#FFFFFF" align="center" width="89%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                                        <tr>
+                                                                                            <td align="center"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                                                <tr>
+                                                                                                    <td align="center"> <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;" >
+                                                                                                        <tr>
+                                                                                                            <td height="32" style="line-height: 32px;" class="mob_space_24">
+                                                                                                                <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td align="left">
+                                                                                                                <div>
+                                                                                                                    <span style="font-family: Arial, sans-serif;line-height: 24px;font-size: 19px;color: #1F1F1F; font-weight: 600;">
+                                                                                                                        <span style="vertical-align: top; line-height: 19px;">
+                                                                                                                            🚓
+                                                                                                                        </span>
+                                                                                                                        Объяснение дня: как проезжать пешеходные переходы
+                                                                                                                    </span>
+                                                                                                                </div>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td height="24" style="line-height: 24px;">
+                                                                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td align="left">
+                                                                                                                <div>
+                                                                                                                    <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                                                        Начальник ГИБДД Михаил Черников рассказал региональным подразделениям ведомства, как на&nbsp;самом деле надо штрафовать водителей за&nbsp;проезд пешеходного перехода. Например, если человек только ступил на&nbsp;&laquo;зебру&raquo; на&nbsp;противоположной стороне дороги, тормозить в&nbsp;пол не&nbsp;надо, а&nbsp;инспекторам не&nbsp;расценивать такое поведение водителей, как нарушение ПДД.
+                                                                                                                        <br>
+                                                                                                                        <br>
+                                                                                                                        Черников напомнил, что на&nbsp;переходе главный всё ещё пешеход, но&nbsp;если действия водителя не&nbsp;заставляют его изменить скорость и&nbsp;направление движения,
+                                                                                                                        <a href="https://auto.ru/" style="font-weight: 600; text-decoration: none; color: #157EE1;">то&nbsp;никакого правонарушения и&nbsp;нет.</a>
+                                                                                                                    </span>
+                                                                                                                </div>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td height="32" style="line-height: 32px;" class="mob_space_24">
+                                                                                                                <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td height="32" style="line-height: 32px;" class="mob_space_24">
+                                                                            <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <div class="mob_block_width" style="display: inline-block; vertical-align: top; max-width: 350px; width: 100%; font-size: 14px; line-height: 18px; overflow: hidden;">
+                                                                                <table dir="ltr" align="center" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                                    <tr>
+                                                                                        <td style="text-align: center; width: 100%; max-width: 320px;">
+                                                                                            <span style="font-family: Arial;
+                                                                                                font-style: normal;
+                                                                                                font-weight: bold;
+                                                                                                font-size: 23px;
+                                                                                                line-height: 28px;
+                                                                                                width: 100%">
+                                                                                                Читать Журнал удобнее в мобильном приложении
+                                                                                            </span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div class="mob_block_width" style="display: inline-block; vertical-align: top; max-width: 130px; width: 100%; font-size: 14px; line-height: 18px; overflow: hidden;">
+                                                                                <table width="102px" dir="ltr" align="center" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                                    <tr>
+                                                                                        <div class="mob_space_8" style="height: 8px; line-height: 24px; font-size: 7px; width: 14px; margin: 0;">
+                                                                                            &nbsp;
+                                                                                        </div>
+                                                                                        <td>
+                                                                                            <a href="https://sb76.adj.st/?adjust_t=m1nelw7_eb04l75&adjust_campaign=mail&adjust_adgroup=digest&adjust_fallback=https%3A%2F%2Fauto.ru%2Fapp%2F&adj_redirect_macos=https%3A%2F%2Fauto.ru%2Fapp%2F">
+                                                                                                <img src="apple.png" style="width: 44px" />
+                                                                                            </a>
+                                                                                        </td>
+                                                                                        <td style="width: 14px; max-width: 14px; min-width: 14px;">
+                                                                                            &nbsp;
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <a href="https://sb76.adj.st/?adjust_t=m1nelw7_eb04l75&adjust_campaign=mail&adjust_adgroup=digest&adjust_fallback=https%3A%2F%2Fauto.ru%2Fapp%2F&adj_redirect_macos=https%3A%2F%2Fauto.ru%2Fapp%2F">
+                                                                                                <img src="android.png" style="width: 44px" />
+                                                                                            </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                                <div class="mob_space_32" style="height: 24px; line-height: 24px; font-size: 7px;">
+                                                                                    &nbsp;
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td height="32" style="line-height: 32px;" class="mob_space_24">
+                                                                            <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td dir="ltr" align="center">
+                                                                <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td align="left" class="mob_align_center">
+                                                                            <div>
+                                                                                <span style="font-family: Arial, sans-serif;line-height: 28px;font-size: 23px;color: #1F1F1F; font-weight: 600" class="mob_text_19">
+                                                                                    А теперь о действительно важном
+                                                                                </span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="24" style="line-height: 24px;">
+                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <table align="left" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td width="40" valign="top">
+                                                                            <img src="https://email-images.mindbox.ru/Autoru/2765/3cddf8b7-9ef9-412a-8f6e-d34f15eafac0.jpg" alt="" width="40" height="40" style="display: block;">
+                                                                        </td>
+                                                                        <td width="16"></td>
+                                                                        <td align="left">
+                                                                            <div>
+                                                                                <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                    АвтоВАЗ приостановит свои заводы <a href="https://mag.auto.ru/article/avtovaz-priostanovit-vse-konveyery-vklyuchaya-izhevskiy/?utm_source=email&utm_medium=social&utm_campaign=030322" style="font-weight: 600; text-decoration: none; color: #157EE1;">с 5 марта</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3" height="24" style="line-height: 24px;">
+                                                                            <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40" valign="top">
+                                                                            <img src="https://email-images.mindbox.ru/Autoru/2765/0afd95de-1720-49a2-83e7-9603de0a32df.jpg" alt="" width="40" height="40" style="display: block;">
+                                                                        </td>
+                                                                        <td width="16"></td>
+                                                                        <td align="left">
+                                                                            <div>
+                                                                                <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                    Volkswagen <a href="https://mag.auto.ru/article/volkswagen-ostanovil-proizvodstvo-v-rossii/?utm_source=email&utm_medium=social&utm_campaign=030322" style="font-weight: 600; text-decoration: none; color: #157EE1;">остановил производство автомобилей в России</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3" height="24" style="line-height: 24px;">
+                                                                            <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40" valign="top">
+                                                                            <img src="https://email-images.mindbox.ru/Autoru/2765/7903184c-f22a-433a-a8bb-bd2ccade9cd8.jpg" alt="" width="40" height="40" style="display: block;">
+                                                                        </td>
+                                                                        <td width="16"></td>
+                                                                        <td align="left">
+                                                                            <div>
+                                                                                <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                    Кроссовер марки Wey, который сравнивали с советской «Победой», <a href="https://mag.auto.ru/article/krossover-marki-wey-kotoryy-sravnivali-s-sovetskoy-pobedoy-vyshel-na-ispytaniya/?utm_source=email&utm_medium=social&utm_campaign=030322" style="font-weight: 600; text-decoration: none; color: #157EE1;">вышел на тесты</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3" height="24" style="line-height: 24px;">
+                                                                            <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="40" valign="top">
+                                                                            <img src="https://email-images.mindbox.ru/Autoru/2765/7ee17ad8-4ecf-43c6-a914-6c863cd24516.jpg" alt="" width="40" height="40" style="display: block;">
+                                                                        </td>
+                                                                        <td width="16"></td>
+                                                                        <td align="left">
+                                                                            <div>
+                                                                                <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                    Skoda <a href="https://mag.auto.ru/article/skoda-zamorazhivaet-deyatelnost-na-territorii-rossii/?utm_source=email&utm_medium=social&utm_campaign=030322" style="font-weight: 600; text-decoration: none; color: #157EE1;">остановила работу в России</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3" height="24" style="line-height: 24px;">
+                                                                            <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="48" class="mob_space_32">
+                                                                <div style="height: 48px;line-height: 48px; font-size: 48px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center">
+                                                                <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <div style="display: block; width: 100%; border-radius: 24px; background: #FFFFFF;">
+                                                                                <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-radius: 24px;overflow:hidden;">
+                                                                                    <tr>
+                                                                                        <td align="center" bgcolor="#FFFFFF">
+                                                                                            <table bgcolor="#FFFFFF" align="center" width="89%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                                                <tr>
+                                                                                                    <td align="center">
+                                                                                                        <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                                                                                            <tr>
+                                                                                                                <td align="center">
+                                                                                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;" >
+                                                                                                                        <tr>
+                                                                                                                            <td height="32" style="line-height: 32px;" class="mob_space_24">
+                                                                                                                                <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td align="left">
+                                                                                                                                <div>
+                                                                                                                                    <span style="font-family: Arial, sans-serif;line-height: 24px;font-size: 19px;color: #1F1F1F; font-weight: 600;">
+                                                                                                                                        <span style="vertical-align: top; line-height: 19px;">😴</span> Почитать перед сном
+                                                                                                                                    </span>
+                                                                                                                                </div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td height="24" style="line-height: 24px;">
+                                                                                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td align="left">
+                                                                                                                                <div>
+                                                                                                                                    <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                                                                        Бездорожье&nbsp;&mdash; штука коварная и&nbsp;не&nbsp;прощающая ошибок. А&nbsp;если ошибка всё-таки состоялась, то&nbsp;без помощи друзей не&nbsp;обойтись. Однако помощь на&nbsp;офф-роуде нужна квалифицированная, потому что неосторожная и&nbsp;неправильная попытка выдернуть засевший автомобиль может закончиться очень печально. Собрали сразу несколько примеров медвежьей услуги.
+                                                                                                                                    </span>
+                                                                                                                                </div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td height="24" style="line-height: 24px;">
+                                                                                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td dir="ltr" align="left">
+                                                                                                                                <table align="left" width="170" class="button" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" style="border-radius:32px;overflow:hidden; max-width: 170px;" >
+                                                                                                                                    <tr>
+                                                                                                                                        <td align="left" valign="bottom" height="38" style="padding: 0;">
+
+                                                                                                                                            <!--[if gte mso 9]>
+                                                                                                                                            <a href="#" target="_blank">
+                                                                                                                                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="#" style="height:34px;v-text-anchor:middle; width:150px;" arcsize="10%" strokeweight="2px" strokecolor="#DB3727" fillcolor="#FFFFFF">
+                                                                                                                                                    <w:anchorlock/>
+
+                                                                                                                                                    <center style="font-size: 17px; color: #DB3727;font-family:Arial,sans-serif;">
+                                                                                                                                                        Читать дальше
+
+                                                                                                                                                    </center>
+                                                                                                                                                </v:roundrect>
+                                                                                                                                            </a>
+                                                                                                                                            <![endif]-->
+
+                                                                                                                                            <!--[if !mso]>-->
+                                                                                                                                            <a href='${processHtml(Products.SearchInIdentity("Journal").GetByValue("journalfirstsleepurl").Description)}' target="_blank" style="background-color:#ffffff;border-radius:32px; color: #DB3727; border: 2px solid #DB3727;display:inline-block;font-family:Arial,sans-serif;font-size:17px;line-height:34px;text-align:center;text-decoration:none;width: 100%; max-width:150px;-webkit-text-size-adjust:none; font-weight: 700;" class="mob_button">Читать!</a>
+                                                                                                                                            <!--<![endif]-->
+                                                                                                                                        </td>
+                                                                                                                                    </tr>
+                                                                                                                                </table>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td height="24" style="line-height: 24px; border-bottom: 1px solid #C5D1D3;">
+                                                                                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td height="24" style="line-height: 24px;">
+                                                                                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+
+                                                                                                                        <tr>
+                                                                                                                            <td align="left">
+                                                                                                                                <div>
+                                                                                                                                    <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                                                                                        В&nbsp;России совсем скоро прекратится выдача бумажных паспортов транспортных средств старого образца&nbsp;&mdash; их&nbsp;заменят электронными документами, оформлением которых будут заниматься производители и&nbsp;импортёры. Рассказываем, что изменится в&nbsp;жизни простых автомобилистов и&nbsp;как всё это будет работать.
+                                                                                                                                    </span>
+                                                                                                                                </div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+
+                                                                                                                        <tr>
+                                                                                                                            <td height="24" style="line-height: 24px;">
+                                                                                                                                <div style="height: 24px; font-size: 24px;">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td dir="ltr" align="left">
+                                                                                                                                <table align="left" width="220" class="button" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" style="border-radius:32px;overflow:hidden; max-width: 220px;" >
+                                                                                                                                    <tr>
+                                                                                                                                        <td align="left" valign="bottom" height="38" style="padding: 0;">
+
+                                                                                                                                            <!--[if gte mso 9]>
+                                                                                                                                            <a href="#" target="_blank">
+                                                                                                                                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="#" style="height:34px;v-text-anchor:middle; width:200px;" arcsize="10%" strokeweight="2px" strokecolor="#DB3727" fillcolor="#FFFFFF">
+                                                                                                                                                    <w:anchorlock/>
+
+                                                                                                                                                    <center style="font-size: 17px; color: #DB3727;font-family:Arial,sans-serif;">
+                                                                                                                                                        Хочу разобраться
+                                                                                                                                                    </center>
+                                                                                                                                                </v:roundrect>
+                                                                                                                                            </a>
+                                                                                                                                            <![endif]-->
+
+                                                                                                                                            <!--[if !mso]>-->
+                                                                                                                                            <a href='${processHtml(Products.SearchInIdentity("Journal").GetByValue("journalsecondsleepurl").Description)}' target="_blank" style="background-color:#ffffff;border-radius:32px; color: #DB3727; border: 2px solid #DB3727;display:inline-block;font-family:Arial,sans-serif;font-size:17px;line-height:34px;text-align:center;text-decoration:none;width: 100%; max-width:200px;-webkit-text-size-adjust:none; font-weight: 700;" class="mob_button">Хочу разобраться</a>
+                                                                                                                                            <!--<![endif]-->
+                                                                                                                                        </td>
+                                                                                                                                    </tr>
+                                                                                                                                </table>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td height="32" style="line-height: 32px;" class="mob_space_24">
+                                                                                                                                <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td height="48" class="mob_space_32">
+                                                                <div style="height: 48px;line-height: 48px; font-size: 48px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <div>
+                                                                    <span style="font-family: Arial, sans-serif;line-height: 28px;font-size: 23px;color: #1F1F1F; font-weight: 600;">
+                                                                        <span style="vertical-align: top; line-height: 19px;">☝</span> Кстати!
+                                                                    </span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td height="16">
+                                                                <div style="height: 16px;line-height: 16px; font-size: 16px">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <div>
+                                                                    <span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+                                                                        У&nbsp;вас есть добрая история про инспекторов ГИБДД? <a href="https://auto.ru/" style="font-weight: 600; text-decoration: none; color: #157EE1;">Обязательно расскажите её&nbsp;нам!</a> Мы&nbsp;выберем лучшие и&nbsp;поделимся ими со&nbsp;всеми читателями Журнала Авто.ру!
+                                                                     </span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td height="48" class="mob_space_32" style="border-bottom: 1px solid #C5D1D3;">
+                                                                <div style="height: 48px;line-height: 48px; font-size: 48px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="16">
+                                                                <div style="height: 16px;line-height: 16px; font-size: 16px">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td align="left">
+                                                                <div>
+<span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+  На сегодня всё, счастливого пути! <br>
+  Команда Журнала Авто.ру.
+</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="48" class="mob_space_32">
+                                                                <div style="height: 48px;line-height: 48px; font-size: 48px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left">
+                                                                <div>
+<span style="font-family: Arial, sans-serif;line-height: 18px;font-size: 13px;color: #7B8F9E;">
+  Письмо отправлено автоматически. <br>
+  Если вы считаете, что получили его по ошибке, <br>
+  просто игнорируйте его или <a target="_blank" href="${Message.UnsubscribeLink}" style="text-decoration:none; color: #2882DB;">отпишитесь.</a>
+</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="64">
+                                                                <div style="height: 64px;line-height: 64px; font-size: 64px" class="mob_space_32">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="16"></td>
+                    </tr>
+                </table>
+
+                <!--[if gte mso 10]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+</body>
+</html>
+
+<tr> <td align="center"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"> <tr> <td align="center"> <div style="display: block; width: 100%; border-radius: 24px; background: #FFFFFF;"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-radius: 24px;overflow:hidden;"> <tr> <td align="center" bgcolor="#FFFFFF"> <table bgcolor="#FFFFFF" align="center" width="89%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"> <tr> <td align="center"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"> <tr> <td align="center"> <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;" > <tr> <td height="32" style="line-height: 32px;" class="mob_space_24"> <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div> </td> </tr> <tr> <td align="left"> <div><span style="font-family: Arial, sans-serif;line-height: 24px;font-size: 19px;color: #1F1F1F; font-weight: 600;"><span style="vertical-align: top; line-height: 19px;">🇨🇳 </span>Очень большой и дорогой китайский электрокроссовер</span> </div> </td> </tr> <tr> <td height="24" style="line-height: 24px;"> <div style="height: 24px; font-size: 24px;">&nbsp;</div> </td> </tr> <tr> <td align="left"> <div><span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+
+Трудно сказать, в какой именно момент нас перестали пугать ценники китайских машин, но автомобиль из Поднебесной за 14 миллионов рублей сегодня всё ещё кажется чем-то невероятным. Однако вот он: большой, роскошный и электрический Hongqi E‑HS9. <a href="https://mag.auto.ru/article/flag-krasnyy-obzor-ochen-bolshogo-kitayskogo-elektrokrossovera-za14-mln-rubley/?utm_source=email&utm_medium=social&utm_campaign=030322" style="font-weight: 600; text-decoration: none; color: #157EE1;">Рассказываем обо всех фишках китайского суперкроссовера!</a>
+
+</span> </div> </td> </tr> <tr> <td height="32" style="line-height: 32px;" class="mob_space_24"> <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </div> </td> </tr> </table> </td> </tr>
+
+<tr> <td align="center"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"> <tr> <td align="center"> <div style="display: block; width: 100%; border-radius: 24px; background: #FFFFFF;"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-radius: 24px;overflow:hidden;"> <tr> <td align="center" bgcolor="#FFFFFF"> <table bgcolor="#FFFFFF" align="center" width="89%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"> <tr> <td align="center"> <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"> <tr> <td align="center"> <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;" > <tr> <td height="32" style="line-height: 32px;" class="mob_space_24"> <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div> </td> </tr> <tr> <td align="left"><div><span style="font-family: Arial, sans-serif;line-height: 24px;font-size: 19px;color: #1F1F1F; font-weight: 600;"><span style="vertical-align: top; line-height: 19px;">🌴 </span>Красивое: Porsche 911, который оказался в раю</span> </div> </td> </tr> <tr> <td height="24" style="line-height: 24px;"> <div style="height: 24px; font-size: 24px;">&nbsp;</div> </td> </tr> <tr> <td align="left"> <div><span style="font-family: Arial, sans-serif;line-height: 20px;font-size: 15px;color: #1F1F1F;">
+
+Вот уже больше 60 лет в Porsche оттачивают внешний вид своей самой главной модели. И, кажется, единственное, чего может порой недоставать вечно эволюционирующему «девятьсот одиннадцатому», так это красивого фона. <a href="https://mag.auto.ru/article/porsche-911-dobro-pozhalovat-v-ray-fotopost/?utm_source=email&utm_medium=social&utm_campaign=020322" style="font-weight: 600; text-decoration: none; color: #157EE1;">Дизайнер из Барселоны попытался представить идеальный мир для актуального 911 Carrera 4S</a> — посмотрите, что из этого вышло.
+
+</span> </div> </td> </tr> <tr> <td height="32" style="line-height: 32px;" class="mob_space_24"> <div style="height: 32px; font-size: 32px;" class="mob_space_24">&nbsp;</div> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr> <td> <div> <img src="https://avatars.mds.yandex.net/get-vertis-journal/4465444/1.jpg_1646119197374/orig" alt="" width="100%" style="display: block; width: 100%;max-width: 560px;"> </div> </td> </tr> </table> </div> </td> </tr> </table> </td> </tr>
